@@ -40,6 +40,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <SeamlessLoopVideo
             src="/videos/aurora.mp4"
+            poster="/images/hero_aurora_bg.png"
             className="w-full h-full opacity-75"
             crossfadeDuration={4}
           />
@@ -73,8 +74,8 @@ export default function Home() {
 
           <SlideIn direction="up" delay={0.6} className="mt-12 max-w-2xl text-center">
             <p className="text-lg md:text-xl text-zinc-200 font-light leading-relaxed tracking-wide drop-shadow-md">
-              We design the nervous systems of tomorrow&apos;s <br className="hidden md:block" />
-              enterprises. <span className="text-white font-medium">Scalar AI</span> solutions for high-velocity teams.
+              We are an <span className="text-white font-medium">Enterprise AI Agency</span> building custom software infrastructure. <br className="hidden md:block" />
+              From <span className="text-white font-medium">Predictive Analytics</span> to <span className="text-white font-medium">Autonomous Agents</span>, we engineer intelligence that works.
             </p>
           </SlideIn>
 
@@ -144,6 +145,7 @@ export default function Home() {
               src="/images/home-hero.png"
               alt="System Core Architecture"
               fill
+              sizes="(max-width: 768px) 100vw, 90vw"
               className="object-cover opacity-60 transition-transform duration-[3s] group-hover:scale-105 ease-out"
             />
             <div className="absolute inset-0 bg-zinc-950/20 mix-blend-multiply"></div>

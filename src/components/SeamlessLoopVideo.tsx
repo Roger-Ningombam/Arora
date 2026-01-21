@@ -4,12 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface SeamlessLoopVideoProps {
     src: string;
+    poster?: string;
     className?: string;
     crossfadeDuration?: number; // Duration in seconds
 }
 
 export const SeamlessLoopVideo: React.FC<SeamlessLoopVideoProps> = ({
     src,
+    poster,
     className = "",
     crossfadeDuration = 3, // Default 3s overlapping crossfade
 }) => {
@@ -137,6 +139,7 @@ export const SeamlessLoopVideo: React.FC<SeamlessLoopVideoProps> = ({
             <video
                 ref={video1Ref}
                 src={src}
+                poster={poster}
                 muted
                 playsInline
                 autoPlay
