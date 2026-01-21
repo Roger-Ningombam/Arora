@@ -1,0 +1,45 @@
+---
+title: Supply Chain Neural Twin
+client: Echo Logistics
+description: A digital twin of a global logistics network, optimizing routes and inventory in real-time using reinforcement learning.
+category: Logistics
+year: "2024"
+image: /images/work-logistics.png
+stats:
+  - label: Cost Savings
+    value: 18%
+  - label: Deliveries
+    value: 2M+
+  - label: CO2 Reduction
+    value: 34%
+tags:
+  - Reinforcement Learning
+  - Digital Twin
+  - Rust
+featured: true
+---
+
+## The Challenge
+
+Echo Logistics manages a fleet of 4,000 trucks and 50+ warehouses. Their legacy optimization software ran batch processes once every 24 hours. The world doesn't wait 24 hours.
+
+Unexpected traffic, weather events, or driver call-outs would render morning plans obsolete by noon, leading to inefficient "empty miles" and missed SLAs.
+
+## The Approach
+
+We built a **Digital Twin** simulated environment and trained Reinforcement Learning (RL) agents to manage the network dynamically.
+
+### 1. The Simulation
+We modeled their entire physical operations in a high-fidelity Rust-based simulation. This allowed us to train agents on "10 years" of logistics scenarios in just 2 days of compute time.
+
+### 2. Multi-Agent RL
+Each region was controlled by a localized agent that optimized for local efficiency while communicating with neighboring agents to ensure global coherence (e.g., handing off loads).
+
+### 3. Continuous Deployment
+The system now re-optimizes the entire fleet every 15 minutes, ingesting traffic API data and warehouse IoT sensor streams.
+
+## The Results
+
+- **Efficiency:** Reduced empty miles by 18%, directly improving bottom-line margins.
+- **Reliability:** On-time delivery rate rose from 82% to 94%.
+- **Sustainability:** Route optimization led to a 34% reduction in fuel consumption and CO2 emissions.

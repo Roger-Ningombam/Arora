@@ -1,0 +1,50 @@
+---
+title: Predictive Churn Engine
+client: Nebula SaaS
+description: A real-time analytics platform predicting user churn with 94% accuracy. We replaced a legacy rule-based system with a dynamic Transformer model.
+category: Fintech AI
+year: "2025"
+image: /images/work-fintech.png
+stats:
+  - label: Accuracy
+    value: 94.2%
+  - label: Revenue Saved
+    value: $4.2M
+  - label: Latency
+    value: 200ms
+tags:
+  - Python
+  - PyTorch
+  - AWS Sagemaker
+featured: true
+---
+
+## The Challenge
+
+Nebula SaaS, a leading fintech platform handling over $5B in annual transaction volume, was facing a critical "leaky bucket" problem. Their legacy churn prediction system was rule-based, static, and only flagged risky accounts after they had already disengaged. 
+
+The existing system had a **high false positive rate (35%)**, causing their success team to waste hours chasing happy customers while high-value at-risk accounts churned silently.
+
+## The Approach
+
+We re-architected their entire retention pipeline around a custom Transformer-based model rather than generic regression.
+
+### 1. Data Unification
+We built a real-time feature store ingesting behavioral signals (login frequency, feature usage), financial signals (billing failures, seat reductions), and support signals (ticket sentiment).
+
+### 2. Temporal Modeling
+Unlike snapshot models, our architecture analyzes *sequences* of user actions. A user logging in 5 times a day might be healthy, or they might be frantically trying to export data before cancelling. Context is everything.
+
+### 3. Intervention Engine
+Prediction is useless without action. We connected the inference engine directly to their CRM (HubSpot) and Intercom. 
+
+## The Results
+
+The system was deployed in shadow mode for 2 weeks, then fully rolled out.
+
+- **Precision:** Increased from 45% to 94.2%
+- **Revenue Impact:** Prevented an estimated $4.2M in annualized churn in Q1
+- **Operational Efficiency:** Support team reduced "check-in" volume by 60%, focusing only on high-provision signals.
+
+> "The autonomous agents developed by VORTEX have fundamentally rewired our operational architecture. We've seen a 400% increase in data processing throughput within weeks."
+> — *Dr. Elena K., CTO of Nebula SaaS*

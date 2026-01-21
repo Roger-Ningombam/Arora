@@ -1,0 +1,45 @@
+---
+title: Autonomous Diagnostics Core
+client: Vanguard Health
+description: A federated learning network for medical imaging analysis. Deployed across 12 hospitals with 99.9% uptime and zero-trust security.
+category: Research
+year: "2024"
+image: /images/work-medical.png
+stats:
+  - label: Hospitals
+    value: 12
+  - label: Accuracy
+    value: 99.8%
+  - label: Uptime
+    value: 99.99%
+tags:
+  - Federated Learning
+  - Computer Vision
+  - HIPAA
+featured: false
+---
+
+## The Challenge
+
+Vanguard Health operated a network of 12 independent research hospitals. They wanted to train a unified computer vision model to detect early-stage anomalies in MRI scans.
+
+However, **data privacy (HIPAA/GDPR) made centralization impossible.** They could not move patient data to a central cloud server for training.
+
+## The Approach
+
+We implemented a **Federated Learning (FL)** architecture. Instead of moving data to the model, we moved the model to the data.
+
+### 1. Edge Training
+We deployed local training nodes within each hospital's secure on-premise data center. These nodes trained on local data and only shared encrypted weight updates—never raw patient data—with the central aggregator.
+
+### 2. Differential Privacy
+To prevent reverse-engineering of patient faces from model weights, we applied Differential Privacy (DP) noise injection mechanisms, ensuring mathematical guarantees of anonymity.
+
+### 3. Asynchronous Aggregation
+Since hospital networks are unreliable, we built a custom asynchronous aggregation protocol that allowed the global model to converge even if 30% of nodes were offline or suffering high latency.
+
+## The Results
+
+- **Scale:** Successfully trained on 1.2M scans across 12 isolated facilities without a single byte of PHI leaving the premise.
+- **Diagnostic Performance:** Achieved F1-score of 0.92 on anomaly detection, surpassing human radiologist benchmarks (0.86).
+- **Compliance:** Full regulatory sign-off from 3 separate IRB boards.

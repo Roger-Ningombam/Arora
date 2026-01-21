@@ -3,15 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@next/bundle-analyzer": "^16.1.4",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "cross-env": "^10.1.0",
+    "framer-motion": "^12.26.2",
+    "gray-matter": "^4.0.3",
     "next": "16.1.2",
+    "next-mdx-remote": "^5.0.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.71.1",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
