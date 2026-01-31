@@ -7,6 +7,11 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { CommandMenu } from "@/components/CommandMenu";
 import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
+import SmoothScroll from "@/components/SmoothScroll";
+import { CustomCursor } from "@/components/CustomCursor";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { LoadingProvider } from "@/context/LoadingContext";
+import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -121,15 +126,27 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <InteractiveGridPattern className="fixed z-0 opacity-80" />
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
-        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
-        <CookieConsent />
-        <CommandMenu />
+
+        {/* Global Noise Overlay */}
+        <div className="fixed inset-0 z-[9999] pointer-events-none opacity-[0.03] mix-blend-overlay bg-noise"></div>
+
+        <LoadingProvider>
+          <LayoutWrapper>
+            <CustomCursor />
+            <ScrollProgress />
+            <SmoothScroll>
+              <InteractiveGridPattern className="fixed z-0 opacity-80" />
+              <Navbar />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+              <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+              <CookieConsent />
+              <CommandMenu />
+            </SmoothScroll>
+          </LayoutWrapper>
+        </LoadingProvider>
       </body>
     </html>
   );

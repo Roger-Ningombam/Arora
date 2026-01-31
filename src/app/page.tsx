@@ -6,11 +6,13 @@ import dynamic from 'next/dynamic';
 import { FadeIn, FadeInStagger } from '@/components/FadeIn';
 import { SlideIn } from '@/components/SlideIn';
 import { MagneticButton } from '@/components/MagneticButton';
-import { InteractiveGridPattern } from '@/components/InteractiveGridPattern';
 import { TypewriterEffect } from '@/components/TypewriterEffect';
 import { SeamlessLoopVideo } from '@/components/SeamlessLoopVideo';
 import { StrategicPillars } from '@/components/StrategicPillars';
 import { FAQ } from '@/components/FAQ';
+import { HeroAnimation } from '@/components/HeroAnimation';
+import { HeroSequence } from '@/components/HeroSequence';
+import { CodeRainAnimation } from '@/components/CodeRainAnimation';
 
 // Lazy Load Heavy Components
 const DashboardPreview = dynamic(() => import('@/components/DashboardPreview').then(mod => mod.DashboardPreview), {
@@ -33,67 +35,23 @@ const ThreeDTiltCard = dynamic(() => import('@/components/ThreeDTiltCard').then(
 export default function Home() {
   return (
     <div className="flex flex-col gap-0 pb-0 bg-zinc-950 text-white selection:bg-green-500/30">
-      {/* IMMERSIVE HERO SECTION */}
-      <div className="min-h-screen relative overflow-hidden bg-zinc-950">
-
-        {/* Aurora Background Video */}
+      {/* IMMERSIVE HERO SEQUENCE - 4 Scroll Scenes */}
+      <HeroSequence>
+        {/* Background Layers */}
         <div className="absolute inset-0 z-0">
           <SeamlessLoopVideo
             src="/videos/aurora.mp4"
             poster="/images/hero_aurora_bg.png"
-            className="w-full h-full opacity-75"
+            className="w-full h-full opacity-30 mix-blend-screen"
             crossfadeDuration={4}
           />
+          <HeroAnimation />
+          <CodeRainAnimation />
 
-          {/* Gradient Overlay for Text Readability - Subtle */}
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/40 opacity-80 pointer-events-none" />
         </div>
-
-        {/* Content Container */}
-        <div className="relative z-30 flex flex-col items-center justify-center min-h-screen w-full px-6 pt-20">
-
-          <SlideIn direction="down" delay={0.2}>
-            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-2xl">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span>
-              <span className="text-xs font-mono tracking-widest text-white/90 uppercase">System v2.0 Live</span>
-            </div>
-          </SlideIn>
-
-          <div className="text-center relative perspective-1000">
-            <SlideIn direction="up" delay={0.3} duration={0.8}>
-              <h1 className="text-[10vw] leading-[0.85] font-bold font-outfit tracking-tighter text-white select-none relative z-20 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                INTELLIGENCE
-              </h1>
-            </SlideIn>
-            <SlideIn direction="up" delay={0.4} duration={0.8}>
-              <h1 className="text-[10vw] leading-[0.85] font-bold font-outfit tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 select-none relative z-20 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                ARCHITECTED
-              </h1>
-            </SlideIn>
-          </div>
-
-          <SlideIn direction="up" delay={0.6} className="mt-12 max-w-2xl text-center">
-            <p className="text-lg md:text-xl text-zinc-200 font-light leading-relaxed tracking-wide drop-shadow-md">
-              We are an <span className="text-white font-medium">Enterprise AI Agency</span> building custom software infrastructure. <br className="hidden md:block" />
-              From <span className="text-white font-medium">Predictive Analytics</span> to <span className="text-white font-medium">Autonomous Agents</span>, we engineer intelligence that works.
-            </p>
-          </SlideIn>
-
-          <SlideIn direction="up" delay={0.8} className="mt-12 flex flex-col md:flex-row gap-8 items-center">
-            <Link href="/work">
-              <MagneticButton className="group relative px-10 py-4 bg-white text-black rounded-full font-bold tracking-tight overflow-hidden hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
-                <span className="relative z-10">Explore Systems</span>
-                <div className="absolute inset-0 bg-zinc-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 -z-0"></div>
-              </MagneticButton>
-            </Link>
-          </SlideIn>
-
-        </div>
-
-        {/* Cinematic Bottom Gradient Fade */}
-        <div className="absolute bottom-0 left-0 w-full h-[30vh] bg-gradient-to-t from-zinc-950 to-transparent z-20 pointer-events-none"></div>
-
-      </div>
+      </HeroSequence>
 
       {/* POST-HERO CONTENT WRAPPER */}
       <div className="relative w-full bg-zinc-950">
@@ -105,16 +63,7 @@ export default function Home() {
         <StrategicPillars />
 
 
-        {/* PHILOSOPHY - Dark & Clean */}
-        <section className="px-6 max-w-7xl mx-auto w-full pt-8 pb-20 relative z-10">
-          <SlideIn direction="up">
-            <div className="flex flex-col items-center justify-center text-center">
-              <h2 className="text-4xl md:text-7xl font-medium tracking-tight text-white leading-[1.05] max-w-5xl h-[3em]">
-                <TypewriterEffect text="Real intelligence isn’t just about clever algorithms. It’s about building systems that can adapt, learn, and deliver real results." />
-              </h2>
-            </div>
-          </SlideIn>
-        </section>
+
 
 
         {/* DASHBOARD PREVIEW */}

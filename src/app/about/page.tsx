@@ -1,178 +1,201 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { FadeIn, FadeInStagger } from '@/components/FadeIn';
+import { FadeIn } from '@/components/FadeIn';
 import { SlideIn } from '@/components/SlideIn';
 import Image from 'next/image';
+import { StoryChapter } from '@/components/StoryChapter';
+import { HorizontalTimeline } from '@/components/HorizontalTimeline';
+import { SystemModules } from '@/components/SystemModules';
+import { MobileCopy } from '@/components/MobileCopy';
 
 const CTA = dynamic(() => import('@/components/CTA'), {
     ssr: false
 });
 
 export default function About() {
-    const usps = [
+    const timeline = [
         {
-            title: "Engineering Over Hype",
-            desc: "We don't just 'wrap' APIs; we architect foundational systems from the ground up with a focus on data integrity and long-term stability."
+            year: '2020',
+            title: 'The Frustration',
+            description: 'Founded by engineers tired of the AI hype cycle. We saw too many "magic" solutions that broke in production.',
+            icon: '⚡'
         },
         {
-            title: "Deterministic AI",
-            desc: "We prioritize traceable decision paths and auditable logic, ensuring our models provide clear explanations rather than unpredictable guesses."
+            year: '2021',
+            title: 'First Principles',
+            description: 'Built our first deterministic AI system for a fintech client. 99.99% uptime from day one. The foundation was set.',
+            icon: '🎯'
         },
         {
-            title: "Enterprise-Grade Latency",
-            desc: "Our architectures are built for speed, consistently delivering sub-millisecond inference times even under the highest enterprise loads."
+            year: '2022',
+            title: 'Scale \u0026 Rigor',
+            description: 'Expanded to serve enterprise clients processing 8M+ requests daily. Our systems became invisible—the highest compliment.',
+            icon: '📈'
         },
         {
-            title: "Radical Transparency",
-            desc: "We operate with an open-source mindset, providing our partners with full visibility into the code and the mechanics of their systems."
-        }
-    ];
-
-    const values = [
-        {
-            title: "Precision First",
-            desc: "We measure twice and cut once. Every line of code is written with the intent to be permanent and performant."
+            year: '2023',
+            title: 'Open Intelligence',
+            description: 'Adopted radical transparency. Open-sourced our core frameworks, believing the best systems are built in the light.',
+            icon: '🔓'
         },
         {
-            title: "Radical Ownership",
-            desc: "We don't just deliver software; we take responsibility for the outcomes and the impact of the systems we deploy."
-        },
-        {
-            title: "Signal Over Noise",
-            desc: "In a world of distraction, we focus exclusively on the technologies that drive real, tangible results for our clients."
-        },
-        {
-            title: "Durable Architecture",
-            desc: "We build for the next decade, not the next quarter. Our systems are modular, scalable, and designed to evolve."
-        },
-        {
-            title: "Human Centricity",
-            desc: "We believe technology should serve humans. Our systems are designed to augment intelligence and free teams from mundane tasks."
+            year: '2024',
+            title: 'The Future',
+            description: "Today we architect autonomous nervous systems for the world's most demanding environments. The work continues.",
+            icon: '🚀'
         }
     ];
 
     return (
-        <div className="bg-zinc-950 min-h-screen text-white">
-            <div className="max-w-7xl mx-auto px-6 py-20 md:py-32">
+        <div className="bg-zinc-950 min-h-screen text-white overflow-hidden">
 
-                {/* Header */}
+            {/* Intro Hero */}
+            <div className="max-w-7xl mx-auto px-6 py-32">
                 <SlideIn direction="up">
                     <div className="inline-flex items-center gap-2 mb-8">
                         <span className="w-2 h-2 rounded-full bg-green-500"></span>
                         <span className="text-xs font-mono tracking-widest text-green-500 uppercase">Architecture Lab Profile</span>
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-24">About ARORA.</h1>
+                    <h1 className="text-6xl md:text-9xl font-bold tracking-tighter mb-12">
+                        <MobileCopy
+                            desktop="About ARORA."
+                            mobile="About Us."
+                            as="span"
+                        />
+                    </h1>
                 </SlideIn>
+            </div>
 
-                {/* Section 1: Who We Are (Intro) */}
-                <section className="mb-32">
-                    <FadeIn>
-                        <h2 className="text-xs font-mono text-green-500 uppercase tracking-[0.2em] mb-12 border-b border-white/10 pb-4 flex items-center gap-4">
-                            <span className="w-8 h-px bg-green-500/50"></span>
-                            Who We Are
-                        </h2>
-                        <div className="max-w-5xl">
-                            <p className="text-3xl md:text-5xl font-medium leading-tight text-white tracking-tight">
-                                We are ARORA, an elite architecture laboratory specializing in the design of <span className="text-green-400">distributed intelligence systems</span>. We partner with high-growth enterprises to transform raw data into autonomous nervous systems.
-                            </p>
-                        </div>
-                    </FadeIn>
-                </section>
-
-                {/* Visual Anchor */}
-                <FadeIn className="mb-32 relative w-full h-[50vh] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(16,185,129,0.05)]">
-                    <Image
-                        src="/images/team-lab.png"
-                        alt="ARORA Labs"
-                        fill
-                        className="object-cover opacity-80"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
-                    <div className="absolute bottom-10 left-10 flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                        <span className="text-white font-mono text-xs uppercase tracking-widest">System_Active // Node_SF</span>
-                    </div>
-                </FadeIn>
-
-                {/* Section 2 & 3: Mission & Story */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 mb-40">
-                    <FadeIn>
-                        <h2 className="text-xs font-mono text-green-500 uppercase tracking-[0.2em] mb-8 border-b border-white/10 pb-4 flex items-center gap-4">
-                            <span className="w-8 h-px bg-green-500/50"></span>
-                            Our Mission
-                        </h2>
-                        <p className="text-xl md:text-2xl text-zinc-100 leading-relaxed font-normal">
-                            We exist to bridge the gap between experimental AI research and <span className="text-white font-semibold">production-grade software</span>.
-                            The problem most enterprises face isn't a lack of tools, but a lack of reliability;
-                            we solve this by building robust, deterministic AI infrastructures.
+            {/* Chapter 1: The Problem */}
+            <StoryChapter
+                title="The Problem with AI"
+                subtitle="Why We Exist"
+                index={1}
+                className="bg-gradient-to-b from-zinc-950 to-zinc-900"
+            >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <p className="text-2xl md:text-3xl text-zinc-100 leading-relaxed mb-8">
+                            Most enterprises face the same challenge: <span className="text-green-400 font-semibold">AI that works in demos but fails in production</span>.
                         </p>
-                    </FadeIn>
-                    <FadeIn>
-                        <h2 className="text-xs font-mono text-green-500 uppercase tracking-[0.2em] mb-8 border-b border-white/10 pb-4 flex items-center gap-4">
-                            <span className="w-8 h-px bg-green-500/50"></span>
-                            Our Story
-                        </h2>
-                        <div className="space-y-8 text-lg md:text-xl text-zinc-300 leading-relaxed">
-                            <p>
-                                ARORA began as a research collective in 2020, born out of frustration with the industry’s obsession with "magic" over mechanics.
-                                Our founders realized that the most powerful AI is the kind that works so consistently it becomes <span className="text-green-400">invisible</span>.
-                            </p>
-                            <p>
-                                We set out to build a firm where rigor is the default. Today, we operate at the intersection of deep learning and distributed systems, helping global leaders automate intelligence at scale.
-                            </p>
+                        <p className="text-xl text-zinc-300 leading-relaxed">
+                            The industry is obsessed with "magic" over mechanics. We exist to bridge the gap between experimental research and production-grade software.
+                        </p>
+                    </div>
+                    <div className="relative">
+                        <div className="p-8 rounded-2xl border border-red-500/20 bg-red-500/5">
+                            <h4 className="text-lg font-mono text-red-400 mb-4">Common Failures:</h4>
+                            <ul className="space-y-3 text-zinc-400">
+                                <li className="flex items-start gap-3">
+                                    <span className="text-red-500">×</span>
+                                    <span>Unpredictable outputs destroying user trust</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-red-500">×</span>
+                                    <span>Models that can't explain their decisions</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-red-500">×</span>
+                                    <span>Systems that break under enterprise load</span>
+                                </li>
+                            </ul>
                         </div>
-                    </FadeIn>
+                    </div>
+                </div>
+            </StoryChapter>
+
+            {/* Chapter 2: The Journey - Timeline */}
+            <StoryChapter
+                title="Our Journey"
+                subtitle="2020 - Present"
+                index={2}
+                className="bg-zinc-900"
+            >
+                <HorizontalTimeline events={timeline} />
+            </StoryChapter>
+
+            {/* Divider - Visual Statement */}
+            <div className="relative w-full h-[70vh] flex items-center justify-center bg-zinc-950">
+                <div className="absolute inset-0">
+                    <Image
+                        src="/images/hero_aurora_bg.png"
+                        alt="System Core"
+                        fill
+                        className="object-cover opacity-30"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-950/80 to-zinc-950"></div>
+                </div>
+                <div className="relative z-10 text-center px-6">
+                    <h2 className="text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30 tracking-tighter mb-6">
+                        "The best AI is invisible"
+                    </h2>
+                    <p className="text-zinc-400 text-lg font-mono">— ARORA Founding Principle</p>
+                </div>
+            </div>
+
+            {/* Chapter 3: The Method - System Modules */}
+            <StoryChapter
+                title="How We Work"
+                subtitle="Operating System"
+                index={3}
+                className="bg-gradient-to-b from-zinc-950 to-zinc-900"
+            >
+                <div className="mb-16">
+                    <p className="text-2xl text-zinc-200 leading-relaxed max-w-3xl">
+                        Our values aren't just principles—they're compiled modules in our operating system.
+                        Each one is rigorously tested and battle-hardened in production.
+                    </p>
                 </div>
 
-                {/* Section 4: What Makes Us Different (USP) */}
-                <section className="mb-40">
-                    <FadeIn className="mb-16">
-                        <h2 className="text-xs font-mono text-green-500 uppercase tracking-[0.2em] mb-8 border-b border-white/10 pb-4 flex items-center gap-4">
-                            <span className="w-8 h-px bg-green-500/50"></span>
-                            What Makes Us Different
-                        </h2>
-                    </FadeIn>
-                    <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {usps.map((usp, i) => (
-                            <FadeIn key={i} className="bg-zinc-900/40 backdrop-blur-xl p-10 rounded-3xl border border-white/10 hover:border-green-500/50 transition-all duration-500 group shadow-2xl hover:shadow-green-500/10 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                                    <span className="text-8xl font-bold text-white italic">0{i + 1}</span>
-                                </div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-green-400 transition-colors flex items-center gap-3">
-                                    {usp.title}
-                                </h3>
-                                <p className="text-zinc-200 text-lg leading-relaxed">{usp.desc}</p>
-                            </FadeIn>
-                        ))}
-                    </FadeInStagger>
-                </section>
+                <SystemModules />
+            </StoryChapter>
 
-                {/* Section 5: Our Values */}
-                <section className="mb-32">
-                    <FadeIn className="mb-16">
-                        <h2 className="text-xs font-mono text-green-500 uppercase tracking-[0.2em] mb-8 border-b border-white/10 pb-4 flex items-center gap-4">
-                            <span className="w-8 h-px bg-green-500/50"></span>
-                            Our Core Values
-                        </h2>
-                    </FadeIn>
-                    <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                        {values.map((v, i) => (
-                            <FadeIn key={i} className="flex flex-col">
-                                <div className="flex items-center gap-4 mb-6">
-                                    <span className="text-green-500 font-mono text-sm px-3 py-1 border border-green-500/20 bg-green-500/5 rounded-full">0{i + 1}</span>
-                                    <h3 className="text-xl md:text-2xl font-bold text-white">{v.title}</h3>
-                                </div>
-                                <p className="text-zinc-300 text-base md:text-lg leading-relaxed pl-2 border-l-2 border-green-500/10">
-                                    {v.desc}
-                                </p>
-                            </FadeIn>
-                        ))}
-                    </FadeInStagger>
-                </section>
+            {/* Chapter 4: The Impact */}
+            <StoryChapter
+                title="Real Results"
+                subtitle="By The Numbers"
+                index={4}
+                className="bg-zinc-900"
+            >
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                    {[
+                        { value: '99.99%', label: 'Uptime Guarantee' },
+                        { value: '<12ms', label: 'Average Latency' },
+                        { value: '8.4M+', label: 'Daily Requests' },
+                        { value: '100%', label: 'Deterministic' }
+                    ].map((stat, i) => (
+                        <FadeIn key={i} className="text-center p-6 rounded-2xl border border-white/10 bg-zinc-950/50">
+                            <div className="text-4xl md:text-6xl font-bold text-green-400 mb-3 font-mono">
+                                {stat.value}
+                            </div>
+                            <div className="text-sm text-zinc-400 uppercase tracking-wider">
+                                {stat.label}
+                            </div>
+                        </FadeIn>
+                    ))}
+                </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 className="text-3xl font-bold text-white mb-6">Enterprise Trust</h3>
+                        <p className="text-xl text-zinc-300 leading-relaxed">
+                            We serve clients who can't afford downtime. Financial institutions, healthcare systems, supply chain networks—environments where <span className="text-green-400">reliability isn't optional</span>.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="text-3xl font-bold text-white mb-6">Built to Last</h3>
+                        <p className="text-xl text-zinc-300 leading-relaxed">
+                            Our systems are architected for the next decade, not the next quarter. Modular, scalable, and designed to evolve with your business.
+                        </p>
+                    </div>
+                </div>
+            </StoryChapter>
+
+            {/* Final CTA */}
+            <div className="py-32">
+                <CTA />
             </div>
-            <CTA />
         </div>
     );
 }
